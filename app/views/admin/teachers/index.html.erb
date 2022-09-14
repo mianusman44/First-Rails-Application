@@ -1,0 +1,55 @@
+<div class="col-lg-10">
+
+<%= search_form_for @q, url: :admin_teachers do |form| %>
+
+<div class="form-group">
+<%= form.label :first_name %>
+<%= form.text_field  :first_name_cont, class: "form-control" %>
+</div>
+
+<div class="form-group">
+<%= form.label :last_name %>
+<%= form.text_field  :last_name_cont, class: "form-control" %>
+</div>
+
+<div class="form-group">
+<%= form.label :email %>
+<%= form.text_field  :email_cont, class: "form-control" %>
+</div>
+
+<div class="form-group">
+<%= form.submit class: "btn btn-primary btn-lg" %>
+</div>
+
+<% end %>
+
+
+
+
+<%= notice %>
+
+<h1>Listing Teachers</h1>
+<%= link_to "New Teacher",new_admin_teacher_path , class: "btn btn-primary mb-2" %>
+<table class="table table-bordered">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th colspan="3">Actions</th>
+  </tr>
+  <% @teachers.each do |teacher|  %>
+    <tr>
+    <td><%= teacher.first_name %> </td>
+    <td><%= teacher.last_name %> </td>
+    <td><%= teacher.email %> </td>
+    <td><%= link_to 'View',admin_teacher_path(teacher) %> </td>
+    <td><%= link_to 'Edit',edit_admin_teacher_path(teacher) %> </td>
+    <td><%= link_to 'Delete',admin_teacher_path(teacher),method: :delete,data:{confirm:'Are you sure ?'} %> </td>
+  </tr>
+    <% end %>
+
+
+</table>
+<%= paginate @teachers %>
+
+</div>
