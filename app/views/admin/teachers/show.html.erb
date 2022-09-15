@@ -2,6 +2,10 @@
 <div class="col-lg-10">
 <div class="card rounded-0 shadow mt-5 mb-5">
 <div class="card-body">
+
+<% if @teacher.profile_image.attached? %>
+<%= image_tag @teacher.profile_image, style: "width:300px;height:300px" %>
+<% end %>
 <h1>Teacher Details</h1>
 
 <p><strong>Full Name</strong> <%= @teacher.full_name %> </p>

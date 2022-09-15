@@ -51,7 +51,7 @@ class Admin::TeachersController < AdminController
 
     private  
     def teacher_params
-        params.require(:teacher).permit(:first_name,:last_name,:email,:date_of_birth)
+        params.require(:teacher).permit(:first_name,:last_name,:email,:date_of_birth,:profile_image)
     end
 
     def set_teacher

@@ -19,29 +19,20 @@
     <%= javascript_pack_tag 'admin', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body id="page-top">
+  <body class="bg-gradiant-primary">
 
-   <div id="wrapper">
-     <%= render 'shared/admin_sidebar' %>
-          <!-- Content Wrapper -->
-         <div id="content-wrapper" class="d-flex flex-column">
-           <!-- Main Content -->
-            <div id="content">
 
-             <%= render 'shared/admin_topbar' %>
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                <%= yield %>
-                </div>
-                <%= render 'shared/admin_logout_model' %>
-                <%= render 'shared/admin_footer' %>
-            </div>
+  <div class="container">
 
+  <div class="row justify-content-center">
+       <div class="col-xl-10 col-lg-12 col-md-9">
+        <%= yield %>
         </div>
-  
-
+  </div>
 
   </div>
+
+
  
   </body>
 </html>
