@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_15_114354) do
+ActiveRecord::Schema.define(version: 2022_09_16_071159) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 2022_09_15_114354) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "commentor"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_user_id", null: false
+    t.integer "post_id", null: false
+    t.index ["admin_user_id"], name: "index_comments_on_admin_user_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -81,6 +92,15 @@ ActiveRecord::Schema.define(version: 2022_09_15_114354) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_user_id", null: false
+    t.index ["admin_user_id"], name: "index_posts_on_admin_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -126,6 +146,9 @@ ActiveRecord::Schema.define(version: 2022_09_15_114354) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "admin_users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "admin_users"
   add_foreign_key "sub_demos", "demos"
   add_foreign_key "teacher_projects", "projects"
   add_foreign_key "teacher_projects", "teachers"
