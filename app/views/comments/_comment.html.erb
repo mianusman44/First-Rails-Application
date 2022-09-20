@@ -9,7 +9,7 @@
       </div>
     </div>
   <%= comment.id %>
-   <% if admin_user_signed_in? %>
+  <% if (current_admin_user.id==comment.admin_user_id || current_admin_user.id==comment.post.admin_user_id)  %>>
      <%= link_to 'Delete', [comment.post, comment],
                   method: :delete, class: "button is-danger", data: { confirm: 'Are you sure?' } %>
  <% end %>

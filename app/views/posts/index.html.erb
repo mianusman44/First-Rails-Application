@@ -17,7 +17,7 @@
         <td><%= post.title %></td>
         <td><%= post.content %></td>
         <td><%= link_to 'Show', post %></td>
-           <% if admin_user_signed_in? %>
+           <% if current_admin_user.id==post.admin_user_id %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
   
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ destroy ]
-  before_action :authenticate_admin_user!, only: %i[destroy]
+  before_action :authenticate_admin_user!, only: %i[ create , destroy]
 
 
 
